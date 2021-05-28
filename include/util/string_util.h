@@ -248,7 +248,7 @@ public:
    *
    * @return 返回gbk格式编码的字符串
    */
-   static std::string StringUtil::Utf8toGbk(const std::string& str);
+   static std::string Utf8toGbk(const std::string& str);
 };
 
 }
