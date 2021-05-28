@@ -5,8 +5,10 @@
 
 #include <iostream>
 #include <sstream>
+#ifdef __WIN32
 #include <Windows.h>
 #include <stringapiset.h>
+#endif
 #include <bitset>
 
 #if defined(WIN32)
@@ -250,6 +252,7 @@ uint16_t StringUtil::GetUint16FromStrWithBigEndian(const char * str) {
     return num;
 }
 
+#ifdef __WIN32
 std::string StringUtil::Utf8toGbk(const std::string& str) {
     size_t wn = MultiByteToWideChar(CP_UTF8, 0, str.c_str(), -1, NULL, 0);
     wchar_t* str1 = new wchar_t[wn + 1];
@@ -266,5 +269,6 @@ std::string StringUtil::Utf8toGbk(const std::string& str) {
     str2 = NULL;
     return outgbk;
 }
+#endif
 
 } // namespace qcloud_cos

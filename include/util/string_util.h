@@ -241,14 +241,16 @@ public:
      */
     static uint16_t GetUint16FromStrWithBigEndian(const char * str);
 
-   /**
-   * @brief 将uf8类型字符串转化为gbk格式编码
-   *
-   * @param str string类型
-   *
-   * @return 返回gbk格式编码的字符串
-   */
-   static std::string Utf8toGbk(const std::string& str);
+#ifdef __WIN32
+    /**
+    * @brief 将uf8类型字符串转化为gbk格式编码
+    *
+    * @param str string类型
+    *
+    * @return 返回gbk格式编码的字符串
+    */
+    static std::string Utf8toGbk(const std::string& str);
+#endif
 };
 
 }

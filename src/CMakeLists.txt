@@ -31,7 +31,7 @@ add_library(cossdk STATIC ${COSSDK_SOURCE_FILES})
 if(WIN32)
     target_link_libraries(cossdk PRIVATE Poco::Foundation Poco::Net Poco::NetSSLWin Poco::Crypto Poco::Util Poco::JSON Poco::XML OpenSSL::SSL OpenSSL::Crypto ${Boost_LIBRARIES} jsoncpp_lib jsoncpp_object)
 else()
-	target_link_libraries(cossdk PocoNetSSL PocoNet PocoCrypto PocoUtil PocoJSON PocoXML PocoFoundation ssl crypto rt stdc++ pthread jsoncpp boost_thread boost_system)
+	target_link_libraries(cossdk Poco::Foundation Poco::Net Poco::NetSSL Poco::Crypto Poco::Util Poco::JSON Poco::XML OpenSSL::SSL OpenSSL::Crypto stdc++ pthread jsoncpp ${Boost_LIBRARIES})
 endif()
 
 set_target_properties(cossdk PROPERTIES OUTPUT_NAME "cossdk")
