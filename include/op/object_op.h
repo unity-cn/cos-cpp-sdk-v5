@@ -18,6 +18,12 @@
 #include "Poco/SharedPtr.h"
 #include "trsf/transfer_handler.h"
 
+#if defined(WIN32) || defined(_WINDOWS)
+#ifdef GetObject
+#undef GetObject
+#endif
+#endif
+
 namespace qcloud_cos {
 
 class FileUploadTask;
