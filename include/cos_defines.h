@@ -77,6 +77,9 @@ typedef enum compress_type {
           (level == COS_LOG_ERR) ? "[ERR] " : "[CRIT]")
 
 
+#if defined(NDEBUG)
+#define COS_LOW_LOGPRN(...)
+#else
 #if defined(_WIN32)
 #define COS_LOW_LOGPRN(level, fmt, ...) \
     if (level <= CosSysConfig::GetLogLevel()) { \
@@ -88,7 +91,7 @@ typedef enum compress_type {
     } else { \
     }
 #else
-#define COS_LOW_LOGPRN(level, fmt, ...) \
+    #define COS_LOW_LOGPRN(level, fmt, ...) \
     if (level <= CosSysConfig::GetLogLevel()) { \
         if (CosSysConfig::GetLogOutType()== COS_LOG_STDOUT) { \
            fprintf(stdout,"%s:%s(%d) " fmt "\n", LOG_LEVEL_STRING(level),__func__,__LINE__, ##__VA_ARGS__); \
@@ -98,6 +101,7 @@ typedef enum compress_type {
         } \
     } else { \
     }
+#endif
 #endif
 
 
