@@ -29,7 +29,7 @@ add_library(cossdk STATIC ${COSSDK_SOURCE_FILES})
 
 # When use the on windows need change the boost library according to the local name
 if(WIN32)
-    target_link_libraries(cossdk PRIVATE Poco::Foundation Poco::Net Poco::NetSSLWin Poco::Crypto Poco::Util Poco::JSON Poco::XML OpenSSL::SSL OpenSSL::Crypto ${Boost_LIBRARIES} jsoncpp_lib jsoncpp_object)
+    target_link_libraries(cossdk PRIVATE Poco::Foundation Poco::Net Poco::NetSSLWin Poco::Crypto Poco::Util Poco::JSON Poco::XML OpenSSL::SSL OpenSSL::Crypto ${Boost_LIBRARIES} jsoncpp_static jsoncpp_object)
 else()
 	target_link_libraries(cossdk Poco::Foundation Poco::Net Poco::NetSSL Poco::Crypto Poco::Util Poco::JSON Poco::XML OpenSSL::SSL OpenSSL::Crypto stdc++ pthread jsoncpp_object jsoncpp_static ${Boost_LIBRARIES})
 endif()
