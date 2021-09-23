@@ -127,8 +127,8 @@ int HttpSender::SendRequest(const std::string& http_method,
         std::unique_ptr<Poco::Net::HTTPClientSession> session;
         if (StringUtil::StringStartsWithIgnoreCase(url_str, "https")) {
             Poco::Net::Context::Ptr context = new Poco::Net::Context(Poco::Net::Context::CLIENT_USE,
-                                                     "", "", "", Poco::Net::Context::VERIFY_RELAXED,
-                                                     9, true, "ALL:!ADH:!LOW:!EXP:!MD5:@STRENGTH");
+                                                     "", Poco::Net::Context::VERIFY_RELAXED,
+                                                     9, "ALL:!ADH:!LOW:!EXP:!MD5:@STRENGTH");
             session.reset(new Poco::Net::HTTPSClientSession(url.getHost(), url.getPort(), context));
         } else {
             session.reset(new Poco::Net::HTTPClientSession(url.getHost(), url.getPort()));
@@ -304,8 +304,8 @@ int HttpSender::SendRequest(const std::string& http_method,
         std::unique_ptr<Poco::Net::HTTPClientSession> session;
         if (StringUtil::StringStartsWithIgnoreCase(url_str, "https")) {
             Poco::Net::Context::Ptr context = new Poco::Net::Context(Poco::Net::Context::CLIENT_USE,
-                                                     "", "", "", Poco::Net::Context::VERIFY_RELAXED,
-                                                     9, true, "ALL:!ADH:!LOW:!EXP:!MD5:@STRENGTH");
+                                                     "", Poco::Net::Context::VERIFY_RELAXED,
+                                                     9, "ALL:!ADH:!LOW:!EXP:!MD5:@STRENGTH");
             session.reset(new Poco::Net::HTTPSClientSession(url.getHost(), url.getPort(), context));
         } else {
             session.reset(new Poco::Net::HTTPClientSession(url.getHost(), url.getPort()));
@@ -489,8 +489,8 @@ int HttpSender::TransferSendRequest(const SharedTransferHandler& handler,
         std::unique_ptr<Poco::Net::HTTPClientSession> session;
         if (StringUtil::StringStartsWithIgnoreCase(url_str, "https")) {
             Poco::Net::Context::Ptr context = new Poco::Net::Context(Poco::Net::Context::CLIENT_USE,
-                                                                     "", "", "", Poco::Net::Context::VERIFY_RELAXED,
-                                                                     9, true, "ALL:!ADH:!LOW:!EXP:!MD5:@STRENGTH");
+                                                                     "", Poco::Net::Context::VERIFY_RELAXED,
+                                                                     9, "ALL:!ADH:!LOW:!EXP:!MD5:@STRENGTH");
             session.reset(new Poco::Net::HTTPSClientSession(url.getHost(), url.getPort(), context));
         } else {
             session.reset(new Poco::Net::HTTPClientSession(url.getHost(), url.getPort()));
